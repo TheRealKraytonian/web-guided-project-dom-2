@@ -17,18 +17,50 @@ const modal = document.querySelector('.modal')
 // 👉 TASK 2- Demo handling click events on button#launchButton, using:
 //  A- HTML inside index.html
 //  B- The DOM's element.onclick attribute
-//  C- element.addEventListener('click', callback)
+// launchButton.onclick = function(event) {
+//     console.log('a better way than just writing html!')
+// }
+// launchButton.onclick = function(event) {
+//     console.log('using the onclick property')
+// }
 
+// //  C- element.addEventListener('click', callback)
+// launchButton.addEventListener('click', function(event){
+//     console.log('using the event listener')
+// })
+// launchButton.addEventListener('click', function(event){
+//     console.log('using the event listener AGAIN')
+// })
+
+document.addEventListener('click', function(event) {
+    console.log('clicking the doc')
+    if (event.target === launchButton) {
+        console.log('you clicked the launch button')
+    } else {
+        console.log("you clicked not launch button")
+    }
+})
+
+// (we can also add event listeners to a collection of things)
 
 // 👉 TASK 3- Create a function that launches!
 // It should open the confirmation modal.
 // Add it as an event listener for click events on the launch button.
 
+launchButton.addEventListener('click', function(event) {
+    // remove the 'off' classname
+    // we have the power!! over the DOM
+    modal.classList.remove('off')
+})
+
 
 // 👉 TASK 4- Create a function to confirm the launch.
 // It should close the modal and display a success report.
 // Add it as a listener for clicks on the confirmation button.
-
+confirmButton.addEventListener('click', function (event) {
+    modal.classList.add('off');
+    successMessage.classList.remove('off');
+});
 
 // 👉 TASK 5- Create a function to cancel the launch.
 // It should close the modal and display a failure report.
